@@ -6,6 +6,16 @@ import BlogHero from "@/components/BlogHero";
 import styles from "./postSlug.module.css";
 import { loadBlogPost } from "@/helpers/file-helpers";
 
+export async function generateMetadata({ params }) {
+	const post = await loadBlogPost(params.postSlug);
+	const { title, abstract } = post.frontmatter;
+
+	return {
+		title: title,
+		description: abstract,
+	};
+}
+
 async function BlogPost({ params }) {
 	const post = await loadBlogPost(params.postSlug);
 	const { title, publishedOn } = post.frontmatter;
