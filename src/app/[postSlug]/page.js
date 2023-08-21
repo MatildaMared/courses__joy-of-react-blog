@@ -6,6 +6,9 @@ import BlogHero from "@/components/BlogHero";
 import styles from "./postSlug.module.css";
 import { loadBlogPost } from "@/helpers/file-helpers";
 import CodeSnippet from "@/components/CodeSnippet";
+const DivisionGroupsDemo = React.lazy(() =>
+	import("@/components/DivisionGroupsDemo")
+);
 
 export async function generateMetadata({ params }) {
 	const post = await loadBlogPost(params.postSlug);
@@ -29,6 +32,7 @@ async function BlogPost({ params }) {
 					source={post.content}
 					components={{
 						pre: CodeSnippet,
+						DivisionGroupsDemo,
 					}}
 				/>
 			</div>
