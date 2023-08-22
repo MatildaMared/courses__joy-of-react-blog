@@ -50,17 +50,13 @@ function DivisionGroupsDemo({
 			</header>
 
 			<div className={styles.demoWrapper}>
-				<motion.div
-					layout={true}
-					className={clsx(styles.demoArea)}
-					style={gridStructure}
-				>
+				<motion.div className={clsx(styles.demoArea)} style={gridStructure}>
 					{range(numOfGroups).map((groupIndex) => (
-						<div key={groupIndex} className={styles.group}>
+						<div key={groupIndex} className={styles.group} layout={true}>
 							{range(numOfItemsPerGroup).map((index) => {
 								return (
 									<motion.div
-										layoutId={id + index}
+										layoutId={id + Math.random()}
 										transition={{
 											type: "spring",
 											stiffness: 300,
